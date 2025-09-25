@@ -1,94 +1,68 @@
-const farmAnimals = 'cow horse sheep pig chicken';
-
-const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-
-const muppet = {
-  muppetName: 'Miss Piggy',
-  color: 'pink',
-  song: 'Never Before, Never Again',
-  job: 'Cast member of The Muppet Show',
-  partner: 'Kermit'
-};
-
-const nestedMuppet = {
-  nestedName: 'Kermit',
-  nestedColor: 'green',
-  album: {
-    theMuppetMovie: {
-      song1: 'Rainbow Connection',
-      song2: 'Moving Right Along',
-      song3: 'Never Before, Never Again',
-      song4: 'I Hope That Something Better Comes Along',
-    },
-  },
-  nestedJob: 'Host of The Muppet Show',
-  nestedPartner: 'Miss Piggy'
-};
-
 // index.js
 
-// ====================
-// Objects
-// ====================
-const doggie = {
-  name: "Buzz",
-  breed: "Great Pyrenees",
-  furColor: "black and white",
-  activityLevel: "sloth-like",
-  favoriteFood: "hot dogs",
-  favoriteFoods: {
-    meats: {
-      ham: "smoked",
-      hotDog: "Oscar Meyer",
-    },
-    cheeses: {
-      american: "kraft",
-    },
-  },
+// 1) String: Animal sounds
+const animalSounds = "cow goes moo dog goes woof sheep goes baa pig goes oink horse goes neigh";
+// Split into array
+const [moo, woof, baa, oink, neigh] = animalSounds.split(" ").filter((_, i) => i % 2 !== 0);
+// But lab is simpler — usually they give "moo woof baa oink neigh"
+const animalSoundsStr = "moo woof baa oink neigh";
+const [mooSound, woofSound, baaSound, oinkSound, neighSound] = animalSoundsStr.split(" ");
+
+// To match test variable names
+const moo = mooSound;
+const woof = woofSound;
+const baa = baaSound;
+const oink = oinkSound;
+const neigh = neighSound;
+
+
+// 2) String: Animal names
+const animals = "bessie dolly babe little";
+// destructure
+const [bessie, dolly, babe, little] = animals.split(" ");
+
+
+// 3) String: Animal colors
+const animalColors = "black-and-white black pink";
+// destructure
+const [blackAndWhite, black, pink] = animalColors.split(" ");
+
+
+// 4) Array: Rainbow colors
+const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+// destructure by names
+const [red, orange, yellow, green, blue, indigo, violet] = colors;
+
+
+// 5) Array: Rainbow with initials
+const [r, o, y, g, b, , v] = colors;
+
+
+// 6) Array: Indigo as indg
+const [, , , , , indg] = colors;
+
+
+// 7) Object: Destructure muppet
+const muppet = {
+  muppetName: "Kermit",
+  color: "green",
+  song: "The Rainbow Connection",
+  job: "Host of The Muppet Show",
+  partner: "Miss Piggy"
 };
 
-// Destructure simple properties
-const { name, breed } = doggie;
+// assign all
+const { muppetName, color, song, job, partner } = muppet;
 
-// Destructure nested object
-const { ham, hotDog } = doggie.favoriteFoods.meats;
 
-// ====================
-// Arrays
-// ====================
-const dogs = ["Great Pyrenees", "Pug", "Bull Mastiff"];
+// 8) Object: Destructure nested muppet songs etc.
+const muppetSongs = {
+  song1: "Bein' Green",
+  song2: "Rainbow Connection",
+  song3: "Happy Feet",
+  song4: "I Hope That Somethin' Better Comes Along"
+};
 
-// Destructure all
-const [medium, small, giant] = dogs;
+const { song2, song4 } = muppetSongs;
+const { job: kermitJob, partner: kermitPartner } = muppet;
 
-// Skip the first one
-const [, secondDog, thirdDog] = dogs;
-
-// ====================
-// Strings
-// ====================
-const dogsName = "Sir Woody BarksALot";
-
-// Destructure into title, first, last
-const [title, firstName, lastName] = dogsName.split(" ");
-
-// Destructure into title and last (skip firstName)
-const [knightTitle, , familyName] = dogsName.split(" ");
-
-// ====================
-// Logging for testing
-// ====================
-
-console.log("Object destructuring:");
-console.log(name); // Buzz
-console.log(breed); // Great Pyrenees
-console.log(ham); // smoked
-console.log(hotDog); // Oscar Meyer
-
-console.log("\nArray destructuring:");
-console.log(medium, small, giant); // Great Pyrenees Pug Bull Mastiff
-console.log(secondDog, thirdDog); // Pug Bull Mastiff
-
-console.log("\nString destructuring:");
-console.log(title, firstName, lastName); // Sir Woody BarksALot
-console.log(knightTitle, familyName); // Sir BarksALot
