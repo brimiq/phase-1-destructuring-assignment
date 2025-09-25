@@ -25,24 +25,70 @@ const nestedMuppet = {
   nestedPartner: 'Miss Piggy'
 };
 
-// Strings
+// index.js
 
-// 1. Use destructuring to assign appropriate variables based on the sounds animals make.
-
-// 2. Bolt the horse wandered off, so just give us four animals, and let's name them bessie, dolly, babe, and little.
-
-// 3. Little the chicken had to go back to the coop, so now we're left with three. Let's use color variables of blackAndWhite, black, and pink.
-
-// Arrays
-
-// 4. Use destructuring to assign appropriate variables using the color names.
-
-// 5. Some people have a really hard time picking out indigo, so let's leave that one out, using the first letter of each color as the variable names.
-
-// 6. But wait! Indigo is now feeling *super* left out. Let's only assign indigo using indg. 
-
+// ====================
 // Objects
+// ====================
+const doggie = {
+  name: "Buzz",
+  breed: "Great Pyrenees",
+  furColor: "black and white",
+  activityLevel: "sloth-like",
+  favoriteFood: "hot dogs",
+  favoriteFoods: {
+    meats: {
+      ham: "smoked",
+      hotDog: "Oscar Meyer",
+    },
+    cheeses: {
+      american: "kraft",
+    },
+  },
+};
 
-// 7. Use destructuring to assign all variables using the keys as the variable names
+// Destructure simple properties
+const { name, breed } = doggie;
 
-// 8. Use destructuring to assign songs 2 and 4, and Kermit's job and partner
+// Destructure nested object
+const { ham, hotDog } = doggie.favoriteFoods.meats;
+
+// ====================
+// Arrays
+// ====================
+const dogs = ["Great Pyrenees", "Pug", "Bull Mastiff"];
+
+// Destructure all
+const [medium, small, giant] = dogs;
+
+// Skip the first one
+const [, secondDog, thirdDog] = dogs;
+
+// ====================
+// Strings
+// ====================
+const dogsName = "Sir Woody BarksALot";
+
+// Destructure into title, first, last
+const [title, firstName, lastName] = dogsName.split(" ");
+
+// Destructure into title and last (skip firstName)
+const [knightTitle, , familyName] = dogsName.split(" ");
+
+// ====================
+// Logging for testing
+// ====================
+
+console.log("Object destructuring:");
+console.log(name); // Buzz
+console.log(breed); // Great Pyrenees
+console.log(ham); // smoked
+console.log(hotDog); // Oscar Meyer
+
+console.log("\nArray destructuring:");
+console.log(medium, small, giant); // Great Pyrenees Pug Bull Mastiff
+console.log(secondDog, thirdDog); // Pug Bull Mastiff
+
+console.log("\nString destructuring:");
+console.log(title, firstName, lastName); // Sir Woody BarksALot
+console.log(knightTitle, familyName); // Sir BarksALot
